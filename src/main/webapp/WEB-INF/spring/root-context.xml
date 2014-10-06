@@ -31,6 +31,4 @@
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	<mvc:resources mapping="/resources/**" location="/resources/merchant_theme/" />
-	<mvc:annotation-driven />
 </beans>

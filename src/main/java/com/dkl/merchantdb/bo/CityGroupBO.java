@@ -1,5 +1,7 @@
 package com.dkl.merchantdb.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,5 +20,12 @@ public class CityGroupBO {
 	
 	public CityGroupTO read(String cityGroupID){
 		return cityGroupDAO.read(cityGroupID);
+	}
+	
+	public List<CityGroupTO> readAll(){
+		return cityGroupDAO.readAll();
+	}
+	public void update(CityGroupTO cityGroupTO){
+		cityGroupDAO.update(cityGroupTO);
 	}
 }

@@ -29,7 +29,7 @@ public class CityGroupController {
 	@RequestMapping(value="/saveCityGroup")
 	public String saveCityGroup(CityGroupTO cityGroupTO){
 		cityGroupBO.create(cityGroupTO);
-		return "createCityGroup";
+		return "viewCityGroup";
 	}
 	
 	@RequestMapping(value="/viewCityGroup")
@@ -40,15 +40,18 @@ public class CityGroupController {
 	@RequestMapping(value="/viewCityGroupJSON")
 	@ResponseBody
 	public String viewCityGroupJSON(Model model){
-		CityGroupTO cityGroupTO = cityGroupBO.read("111");
-		List<CityGroupTO> data = new ArrayList<CityGroupTO>();
-		data.add(cityGroupTO);
 		CityGroupJSON cityGroupJSON = new CityGroupJSON();
 		cityGroupJSON.setDraw(1);
 		cityGroupJSON.setRecordsFiltered(57);
 		cityGroupJSON.setRecordsTotal(57);
-		cityGroupJSON.setData(data);
+		cityGroupJSON.setData(cityGroupBO.readAll());
 		Gson gson = new Gson();
 		return gson.toJson(cityGroupJSON);
+	}
+	
+	@RequestMapping(value="/updateCityGroup")
+	public String updateCityGroup(CityGroupTO cityGroupTO){
+		cityGroupBO.update(cityGroupTO);
+		return "viewCityGroup";
 	}
 }
