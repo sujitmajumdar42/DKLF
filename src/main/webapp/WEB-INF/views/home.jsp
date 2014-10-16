@@ -1,14 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 <html>
 <head>
-	<title>Home</title>
+<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+	<h1>Welcome To DKL Firm.</h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+	<P>Established in 1953, the firms is the best quality supplier of
+		Jaggery, Tamarind, Red Chillies and Soap Nuts.</P>
 </body>
 </html>

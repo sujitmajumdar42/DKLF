@@ -9,19 +9,19 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>  
 <body>  
-    <table border="1" cellspacing="2" align="center" width="1100" height="600">  
+    <table cellspacing="2" align="center" width="1100" height="600" style="border:1px solid gray">  
         <tr>  
-            <td height="20%" width="100%" colspan="2"><tiles:insertAttribute name="header" />  
+            <td height="20%" width="100%" colspan="2" style="border-bottom:1px solid gray"><tiles:insertAttribute name="header" />  
             </td>  
         </tr>  
         <tr>  
-            <td height="60%" width="10%"><tiles:insertAttribute name="menu" />  
+            <td height="60%" width="15%" ><tiles:insertAttribute name="menu" />  
             </td>  
-            <td width="80%"><tiles:insertAttribute name="body" />  
+            <td width="80%" style="border-left:1px solid gray"><tiles:insertAttribute name="body" />  
             </td>  
         </tr>  
         <tr>  
-            <td height="20%" width="100%" colspan="2"><tiles:insertAttribute name="footer" />  
+            <td height="20%" width="100%" colspan="2" style="border-top:1px solid gray"><tiles:insertAttribute name="footer" />  
             </td>  
         </tr>  
     </table>  

@@ -52,11 +52,11 @@
 		});
 
 		$('#update').click(function() {
-			if (selected_row == null){
+			if (selected_row == null) {
 				$("#def_dialog_text").show();
 				$("#UpdateTable").hide();
 				$("#dialog").dialog();
-			}else{
+			} else {
 				$("#companyID").val(selected_row.find("td").eq(0).html());
 				$("#cityGroupID").val(selected_row.find("td").eq(1).html());
 				$("#cityGroupName").val(selected_row.find("td").eq(2).html());
@@ -64,9 +64,9 @@
 				$("#UpdateTable").show();
 				$("#dialog").dialog();
 			}
-			
-// 			if (selected_row != null)
-// 				alert(selected_row.find("td").eq(2).html());
+
+			// 			if (selected_row != null)
+			// 				alert(selected_row.find("td").eq(2).html());
 		});
 	});
 </script>
@@ -90,18 +90,21 @@
 			<table id="UpdateTable" style="display: none">
 				<tr>
 					<td>Company ID</td>
-					<td><input type="text" id="companyID" name="companyID" readonly /></td>
+					<td><input type="text" id="companyID" name="companyID"
+						readonly /></td>
 				</tr>
 				<tr>
 					<td>City Group ID</td>
-					<td><input type="text" id="cityGroupID" name="cityGroupID" readonly /></td>
+					<td><input type="text" id="cityGroupID" name="cityGroupID"
+						readonly /></td>
 				</tr>
 				<tr>
 					<td>City Group Name</td>
 					<td><input type="text" id="cityGroupName" name="cityGroupName" /></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="Update"><input type="reset" value="Reset Data"></td>
+					<td colspan="2"><input type="submit" value="Update"><input
+						type="reset" value="Reset Data"></td>
 				</tr>
 			</table>
 		</form>

@@ -1,7 +1,5 @@
 package com.dkl.merchantdb.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.dkl.merchantdb.bo.CityGroupBO;
 import com.dkl.merchantdb.to.CityGroupJSON;
 import com.dkl.merchantdb.to.CityGroupTO;
+import com.dkl.merchantdb.to.JsonTemplateTO;
 import com.google.gson.Gson;
 
 @Controller
@@ -22,7 +21,6 @@ public class CityGroupController {
 	
 	@RequestMapping(value="/createCityGroup")
 	public String createCityGroup(CityGroupTO cityGroupTO){
-		//cityGroupBO.create(cityGroupTO);
 		return "createCityGroup";
 	}
 	
@@ -40,6 +38,13 @@ public class CityGroupController {
 	@RequestMapping(value="/viewCityGroupJSON")
 	@ResponseBody
 	public String viewCityGroupJSON(Model model){
+		
+		JsonTemplateTO jsonTemplateTO = new JsonTemplateTO();
+//		jsonTemplateTO.setDraw(1);
+//		jsonTemplateTO.setRecordsFiltered(57);
+//		jsonTemplateTO.setRecordsTotal(57);
+//		jsonTemplateTO.setData(cityGroupBO.readAll());
+		
 		CityGroupJSON cityGroupJSON = new CityGroupJSON();
 		cityGroupJSON.setDraw(1);
 		cityGroupJSON.setRecordsFiltered(57);
