@@ -14,18 +14,20 @@ public class CompanyMapper implements RowMapper<CompanyTO> {
 			throws SQLException {
 
 		CompanyTO companyTO = new CompanyTO();
-		companyTO.setCompanyID(Integer.toString(resultSet.getInt("companyID")));
-		companyTO.setCompanyName(resultSet.getString("companyName"));
-		companyTO.setCity(resultSet.getString("City"));
-		companyTO.setState(resultSet.getString("State"));
-		companyTO.setStreetName(resultSet.getString("streetName"));
-		companyTO.setSlipsIndicator(resultSet.getString("SlipsIndicator"));
-		companyTO.setCreationDate(resultSet.getDate("creationDate"));
-		companyTO.setModifiedDate(resultSet.getDate("modifiedDate"));
-		companyTO.setEmail(resultSet.getString("email"));
-		companyTO.setPhoneNumber(Long.toString(resultSet.getLong("Phone")));
-		companyTO.setPinCode(Integer.toString(resultSet.getInt("pinCode")));
-		companyTO.setTinNumber(Long.toString(resultSet.getLong("TIN")));
+		companyTO.setCompanyID(resultSet.getString("company_ID"));
+		companyTO.setCompanyName(resultSet.getString("company_Name"));
+		companyTO.setCity(resultSet.getString("company_city"));
+		companyTO.setState(resultSet.getString("company_state"));
+		companyTO.setStreetName(resultSet.getString("company_street_Name"));
+		companyTO.setSlipsIndicator(resultSet.getString("company_slips_ind"));
+		companyTO
+				.setCreationDate(resultSet.getString("company_creation_Date"));
+		companyTO.setModifiedDate(resultSet.getString("company_mod_Date"));
+		companyTO.setEmail(resultSet.getString("company_email"));
+		companyTO.setPhoneNumber(Long.toString(resultSet
+				.getLong("company_phone")));
+		companyTO.setPinCode(Integer.toString(resultSet.getInt("company_pin")));
+		companyTO.setTinNumber(Long.toString(resultSet.getLong("company_tin")));
 		return companyTO;
 	}
 

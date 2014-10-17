@@ -1,5 +1,6 @@
 package com.dkl.merchantdb.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dkl.merchantdb.bo.CompanyBO;
 import com.dkl.merchantdb.to.CompanyTO;
+import com.dkl.merchantdb.to.JsonTemplateTO;
+import com.google.gson.Gson;
 
 @Controller
 public class CompanyController {
@@ -19,9 +22,6 @@ public class CompanyController {
 	
 	@RequestMapping(value = "/createCompany")
 	public String createCompany(Locale locale, Model model) {
-
-		// model.addAttribute("serverTime", formattedDate );
-		System.out.println("createCompany");
 		return "createCompany";
 	}
 
@@ -41,18 +41,16 @@ public class CompanyController {
 		return "viewCompany";
 	}
 
-//	@RequestMapping(value = "/viewCompanyJSON")
-//	@ResponseBody
-//	public String viewCompanyJSON(Model model) {
-//		List<CompanyTO> companyTOs = companyBO.viewCompany();
-//		CompanyJSON companyJSON = new CompanyJSON();
-//		companyJSON.setDraw(1);
-//		companyJSON.setRecordsFiltered(57);
-//		companyJSON.setRecordsTotal(57);
-//		companyJSON.setData(companyTOs);
-//		 
-//		Gson gson = new Gson();
-//		return gson.toJson(companyJSON);
-//	}
+	@RequestMapping(value = "/viewCompanyJSON")
+	@ResponseBody
+	public String viewCompanyJSON(Model model) {
+		JsonTemplateTO jsonTemplateTO = new JsonTemplateTO();
+		jsonTemplateTO.setDraw(1);
+		jsonTemplateTO.setRecordsFiltered(20);
+		jsonTemplateTO.setRecordsTotal(20);
+		List<CompanyTO> dataList = companyBO.viewCompany();
+		jsonTemplateTO.setData(dataList.toArray(new CompanyTO[dataList.size()]));
+		return new Gson().toJson(jsonTemplateTO);		
+	}
 	
 }

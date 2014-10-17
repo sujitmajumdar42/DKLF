@@ -4,10 +4,10 @@
 <a href="/merchantdb/createLedgerGroup">Create LedgerGroup</a>
  -->
 <ul>
-	<li><a href="#">Company</a>
+	<li><a href="/merchantdb/viewCompany">Company</a>
 		<ul>
-			<li><a href="#">Create</a></li>
-			<li><a href="#">View/Update</a></li>
+			<li><a href="/merchantdb/createCompany">Create</a></li>
+			<li><a href="/merchantdb/viewCompany">View/Update</a></li>
 		</ul></li>
 	<li><a href="/merchantdb/viewCityGroup">City Group</a>
 		<ul>

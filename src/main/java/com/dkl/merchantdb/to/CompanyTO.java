@@ -1,9 +1,6 @@
 package com.dkl.merchantdb.to;
 
-import java.sql.Date;
-
-
-public class CompanyTO{
+public class CompanyTO extends MerchantBaseTO {
 
 	String companyID;
 	String companyName;
@@ -15,8 +12,8 @@ public class CompanyTO{
 	String phoneNumber;
 	String email;
 	String slipsIndicator;
-	Date creationDate;
-	Date modifiedDate;
+	String creationDate;
+	String modifiedDate;
 
 	public String getCompanyID() {
 		return companyID;
@@ -98,19 +95,19 @@ public class CompanyTO{
 		this.slipsIndicator = slipsIndicator;
 	}
 
-	public Date getCreationDate() {
+	public String getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
 
-	public Date getModifiedDate() {
+	public String getModifiedDate() {
 		return modifiedDate;
 	}
 
-	public void setModifiedDate(Date modifiedDate) {
+	public void setModifiedDate(String modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 
