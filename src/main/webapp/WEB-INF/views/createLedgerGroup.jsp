@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="/merchantdb/saveLedgerGroup" method="post">
-	<input type="hidden" name="companyID" value="COMP111">
+	<input type="hidden" name="companyID" value="<%=request.getParameter("companyID")%>">
 		<table>
 			<tr>
 				<td>Group Name</td>

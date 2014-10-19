@@ -10,7 +10,7 @@ public interface ILedgGroupDAO {
 	LedgGroupTO read(int ledgGroupID);
 	List<LedgGroupTO> readAll();
 	void update(LedgGroupTO ledgGroupTO);
-	void delete(int ledgGroupID);
+	void delete(String ledgGroupID);
 	List<LedgGroupTO> readByFK(int companyID);
 	
 }

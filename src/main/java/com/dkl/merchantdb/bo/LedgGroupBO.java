@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.dkl.merchantdb.dao.impl.LedgGroupDAO;
+import com.dkl.merchantdb.dao.impl.SequenseGenDAO;
 import com.dkl.merchantdb.to.LedgGroupTO;
 import com.dkl.merchantdb.util.DklUtil;
 
@@ -15,8 +16,11 @@ public class LedgGroupBO {
 	@Autowired
 	LedgGroupDAO ledgGroupDAO;
 	
+	@Autowired
+	SequenseGenDAO SequenseGenDAO;
+	
 	public void create(LedgGroupTO ledgGroupTO){
-		ledgGroupTO.setLedgGroupID(DklUtil.getLedgerID());
+		ledgGroupTO.setLedgGroupID(SequenseGenDAO.getSequenceID("LEDGER_GRP_ID", "LEDGER_GROUP"));
 		ledgGroupTO.setLedgCreateDate(DklUtil.getTodayDate());
 		ledgGroupTO.setLedgModDate(DklUtil.getTodayDate());
 		ledgGroupDAO.create(ledgGroupTO);
@@ -31,10 +35,11 @@ public class LedgGroupBO {
 	}
 	
 	public void update(LedgGroupTO ledgGroupTO){
+		ledgGroupTO.setLedgModDate(DklUtil.getTodayDate());
 		ledgGroupDAO.update(ledgGroupTO);
 	}
 	
-	public void delete(int ledgGroupID){
+	public void delete(String ledgGroupID){
 		ledgGroupDAO.delete(ledgGroupID);
 	}
 	

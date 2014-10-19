@@ -1,7 +1,5 @@
 package com.dkl.merchantdb.to;
 
-import java.util.List;
-
 public class JsonTemplateTO {
 
 	private int draw;

@@ -1,20 +1,18 @@
 package com.dkl.merchantdb.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dkl.merchantdb.bo.LedgGroupBO;
 import com.dkl.merchantdb.to.JsonTemplateTO;
 import com.dkl.merchantdb.to.LedgGroupTO;
-import com.dkl.merchantdb.to.MerchantBaseTO;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 @Controller
 public class LedgeGroupController {
@@ -49,4 +47,17 @@ public class LedgeGroupController {
 		jsonTemplateTO.setData(ledgGroupBO.readAll().toArray(new LedgGroupTO[dataList.size()]));
 		return new Gson().toJson(jsonTemplateTO);
 	}
+	
+	@RequestMapping(value="/updateLedgerGroup")
+	public String updateLedgerGroup(LedgGroupTO ledgGroupTO){
+		ledgGroupBO.update(ledgGroupTO);
+		return "viewLedgerGroup";
+	}
+	
+	@RequestMapping(value="/deleteLedgerGroup")
+	public String deleteLedgerGroup(@RequestParam("ledgGroupID") String ledgGroupID){
+		ledgGroupBO.delete(ledgGroupID);
+		return "viewLedgerGroup";
+	}
+	
 }

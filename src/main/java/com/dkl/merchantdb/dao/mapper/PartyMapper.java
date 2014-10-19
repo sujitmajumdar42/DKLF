@@ -13,13 +13,17 @@ public class PartyMapper implements RowMapper<PartyTO> {
 	public PartyTO mapRow(ResultSet resultSet, int row) throws SQLException {
 
 		PartyTO partyTO = new PartyTO();
-		partyTO.setCity(resultSet.getString("city"));
-		partyTO.setCityGroup(resultSet.getString("cityGroup"));
-		partyTO.setLedgerGroupName(resultSet.getString("ledgerGroupName"));
-		partyTO.setPartyName(resultSet.getString("partyName"));
-		partyTO.setPartyType(resultSet.getString("partyType"));
-		partyTO.setStreetName(resultSet.getString("streetName"));
-		partyTO.setTelephone(resultSet.getString("telephone"));
+		partyTO.setPartyID(resultSet.getLong("PARTY_ID"));
+		partyTO.setCompanyID(resultSet.getLong("COMPANY_ID"));
+		partyTO.setPartyName(resultSet.getString("PARTY_Name"));
+		partyTO.setPartyType(resultSet.getString("PARTY_TYPE"));
+		partyTO.setCityGroup(resultSet.getString("CITY_GROUP_NAME"));
+		partyTO.setLedgerGroupName(resultSet.getString("LEDGER_GRP_NAME"));
+		partyTO.setStreetName(resultSet.getString("PARTY_STREET_NAME"));
+		partyTO.setCity(resultSet.getString("PARTY_CITY"));
+		partyTO.setTelephone(resultSet.getString("PARTY_PHONE"));
+		partyTO.setCreationDate(resultSet.getString("PARTY_CRT_DATE"));
+		partyTO.setModifiedDate(resultSet.getString("PARTY_MOD_DATE"));
 		return partyTO;
 	}
 

@@ -20,13 +20,17 @@ public class CityGroupDAO implements IcityGroupDAO {
 	private static String READ_QUERY = "SELECT * FROM DKLF.CITY_GROUP WHERE CITY_GROUP_ID = ?";
 	private static String READ_ALL_QUERY = "SELECT * FROM DKLF.CITY_GROUP";
 	private static String UPDATE_QUERY = "UPDATE DKLF.CITY_GROUP SET CITY_GROUP_NAME = ? WHERE CITY_GROUP_ID=?";
-
+	private static String DELETE_QUERY = "DELETE FROM `dklf`.`city_group` WHERE `CITY_GROUP_ID`=? ";
+    
 	@Override
 	public void create(CityGroupTO cityGroupTO) {
+		System.out.println(cityGroupTO.getCompanyID() + " : "
+				+ cityGroupTO.getCityGroupID() + " : "
+				+ cityGroupTO.getCityGroupName());
 		jdbcTemplate.update(
 				CREATE_QUERY,
-				new Object[] { cityGroupTO.getCompanyID(),
-						cityGroupTO.getCityGroupID(),
+				new Object[] { cityGroupTO.getCityGroupID(),
+						cityGroupTO.getCompanyID(),
 						cityGroupTO.getCityGroupName() });
 
 	}
@@ -52,9 +56,8 @@ public class CityGroupDAO implements IcityGroupDAO {
 	}
 
 	@Override
-	public void delete(CityGroupTO cityGroupTO) {
-		// TODO Auto-generated method stub
-
+	public void delete(String cityGroupID) {
+		jdbcTemplate.update(DELETE_QUERY,new Object[]{cityGroupID});
 	}
 
 }

@@ -8,5 +8,11 @@ public interface ICompanyDAO {
 
 	int createCompany(CompanyTO companyTO);
 
-	List<CompanyTO> viewCompany();
+	CompanyTO viewCompany(String companyID);
+	
+	List<CompanyTO> viewCompanyList();
+	
+	void update(CompanyTO companyTO);
+	
+	void delete(String companyID);
 }

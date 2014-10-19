@@ -48,7 +48,7 @@
 				</tr>
 				<tr>
 					<td>Ship System</td>
-					<td><input type="radio" >Yes <input type="radio">No</td>
+					<td><input type="radio" name="slipsIndicator" value="Yes" >Yes <input type="radio" name="slipsIndicator" value="No">No</td>
 				</tr>
 				<tr>
 					<td><br></td>

@@ -5,12 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<script type="text/javascript" src="./js/jquery-1.11.1.min.js" /></script>
 <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="./js/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="./css/jquery.dataTables.css">
-<link rel="stylesheet" type="text/css" href="./css/jquery-ui.css">
 <style type="text/css">
 .ui-dialog .ui-dialog-content {
 	background: none repeat scroll 0 0 transparent;
@@ -30,6 +27,15 @@
 				"url" : "/merchantdb/viewCityGroupJSON",
 				"type" : "POST"
 			},
+			"columnDefs" : [ {
+				"targets" : [ 0 ],
+				"visible" : false,
+				"searchable" : false
+			}, {
+				"targets" : [ 1 ],
+				"visible" : false,
+				"searchable" : false
+			} ],
 			"columns" : [ {
 				"data" : "companyID"
 			}, {
@@ -38,41 +44,22 @@
 				"data" : "cityGroupName"
 			} ]
 		});
-		var table = $('#example').DataTable();
-		var selected_row = null;
-		$('#viewCityGroup').on('click', 'tr', function() {
-			if (selected_row == null) {
-				$(this).toggleClass('selected');
-				selected_row = $(this);
-			} else {
-				$(selected_row).toggleClass('selected');
-				$(this).toggleClass('selected');
-				selected_row = $(this);
-			}
-		});
-
-		$('#update').click(function() {
-			if (selected_row == null) {
-				$("#def_dialog_text").show();
-				$("#UpdateTable").hide();
-				$("#dialog").dialog();
-			} else {
-				$("#companyID").val(selected_row.find("td").eq(0).html());
-				$("#cityGroupID").val(selected_row.find("td").eq(1).html());
-				$("#cityGroupName").val(selected_row.find("td").eq(2).html());
-				$("#def_dialog_text").hide();
-				$("#UpdateTable").show();
-				$("#dialog").dialog();
-			}
-
-			// 			if (selected_row != null)
-			// 				alert(selected_row.find("td").eq(2).html());
+		var table = $('#viewCityGroup').DataTable();
+		$('#viewCityGroup tbody').on('click', 'tr', function() {
+			var rowData = table.row(this).data();
+			$("[name = companyID]").val(rowData.companyID);
+			$("[name = cityGroupID]").val(rowData.cityGroupID);
+			$("[name = cityGroupName]").val(rowData.cityGroupName);
+			$("#dialog").dialog();
 		});
 	});
 </script>
 </head>
 <body>
-	<input type="button" value="update" id="update" />
+	<a
+		href="/merchantdb/createCityGroup?companyID=<%=request.getParameter("companyID")%>"
+		style="text-decoration: none;"> <input type="button"
+		value="Create CityGroup"></a>
 	<table id="viewCityGroup" class="display" cellspacing="0" width="100%">
 		<thead>
 			<tr>
@@ -85,27 +72,25 @@
 	</table>
 	<div id="dialog" title="Update City Group"
 		style="display: none; text-size: 10px">
-		<p id="def_dialog_text" style="display: block">Please select data.</p>
 		<form method="post" action="/merchantdb/updateCityGroup">
-			<table id="UpdateTable" style="display: none">
-				<tr>
-					<td>Company ID</td>
-					<td><input type="text" id="companyID" name="companyID"
-						readonly /></td>
-				</tr>
-				<tr>
-					<td>City Group ID</td>
-					<td><input type="text" id="cityGroupID" name="cityGroupID"
-						readonly /></td>
-				</tr>
+			<input type="hidden" name="companyID" /> <input type="hidden"
+				name="cityGroupID" />
+			<table id="UpdateCGTable">
 				<tr>
 					<td>City Group Name</td>
-					<td><input type="text" id="cityGroupName" name="cityGroupName" /></td>
+					<td><input type="text" name="cityGroupName" /></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="Update"><input
-						type="reset" value="Reset Data"></td>
+					<td colspan="2"><input type="submit" value="Update"></td>
 				</tr>
+			</table>
+		</form>
+		<form method="post" action="/merchantdb/deleteCityGroup">
+			<input type="hidden" name="cityGroupID" />
+			<table>
+			 <tr>
+			  <td><input type="submit" value="Remove City Group"></td>
+			 </tr>
 			</table>
 		</form>
 	</div>

@@ -6,6 +6,12 @@ import com.dkl.merchantdb.to.PartyTO;
 
 public interface IPartyDAO {
 	int createParty(PartyTO partyTO);
-	
-	List<PartyTO> viewParties();
+
+	PartyTO readParty(String partyID);
+
+	List<PartyTO> readAllParty();
+
+	void updateParty(PartyTO partyTO);
+
+	void deleteParty(String partyID);
 }

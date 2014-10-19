@@ -1,12 +1,17 @@
 package com.dkl.merchantdb.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dkl.merchantdb.bo.PartyBO;
+import com.dkl.merchantdb.to.JsonTemplateTO;
 import com.dkl.merchantdb.to.PartyTO;
+import com.google.gson.Gson;
 
 @Controller
 public class PartyController {
@@ -33,16 +38,15 @@ public class PartyController {
 		return "viewParty";
 	}
 
-//	@RequestMapping(value = "/viewPartyJSON")
-//	@ResponseBody
-//	public String viewPartyJSON(Model model) {
-//		List<PartyTO> partyTOs = partyBO.viewAllParties();
-//		PartyJSON partyJSON = new PartyJSON();
-//		partyJSON.setDraw(1);
-//		partyJSON.setRecordsFiltered(10);
-//		partyJSON.setRecordsTotal(10);
-//		partyJSON.setData(partyTOs);
-//		Gson gson = new Gson();
-//		return gson.toJson(partyJSON);
-//	}
+	@RequestMapping(value = "/viewPartyJSON")
+	@ResponseBody
+	public String viewPartyJSON(Model model) {
+		
+		JsonTemplateTO jsonTemplateTO = new JsonTemplateTO();
+		jsonTemplateTO.setRecordsFiltered(10);
+		jsonTemplateTO.setRecordsTotal(10);
+		List<PartyTO> dataList = partyBO.readAllParty();
+		jsonTemplateTO.setData(dataList.toArray(new PartyTO[dataList.size()]));
+		return new Gson().toJson(jsonTemplateTO);
+	}
 }

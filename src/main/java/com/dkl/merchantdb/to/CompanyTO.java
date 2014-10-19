@@ -2,7 +2,7 @@ package com.dkl.merchantdb.to;
 
 public class CompanyTO extends MerchantBaseTO {
 
-	String companyID;
+	Long companyID;
 	String companyName;
 	String streetName;
 	String city;
@@ -15,11 +15,11 @@ public class CompanyTO extends MerchantBaseTO {
 	String creationDate;
 	String modifiedDate;
 
-	public String getCompanyID() {
+	public Long getCompanyID() {
 		return companyID;
 	}
 
-	public void setCompanyID(String companyID) {
+	public void setCompanyID(Long companyID) {
 		this.companyID = companyID;
 	}
 

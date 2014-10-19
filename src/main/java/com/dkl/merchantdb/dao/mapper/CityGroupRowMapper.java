@@ -13,8 +13,8 @@ public class CityGroupRowMapper implements RowMapper<CityGroupTO> {
 	public CityGroupTO mapRow(ResultSet resultSet, int rowNum)
 			throws SQLException {
 		CityGroupTO cityGroupTO = new CityGroupTO();
-		cityGroupTO.setCompanyID(resultSet.getString("company_ID"));
-		cityGroupTO.setCityGroupID(resultSet.getString("city_group_ID"));
+		cityGroupTO.setCompanyID(resultSet.getLong("company_ID"));
+		cityGroupTO.setCityGroupID(resultSet.getLong("city_group_ID"));
 		cityGroupTO.setCityGroupName(resultSet.getString("city_group_name"));
 		return cityGroupTO;
 	}

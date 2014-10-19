@@ -20,9 +20,9 @@ public class LedgGroupDAO implements ILedgGroupDAO {
 	private static String READ_ALL_QUERY = "SELECT * FROM DKLF.LEDGER_GROUP";
 
 	private static String UPDATE_QUERY = "UPDATE DKLF.LEDGER_GROUP SET LEDGER_GRP_NAME = ?,"
-			+ "LEDGER_GRP_TYPE = ?"
-			+ "LEDGER_GRP_CRT_DATE = ?"
-			+ "LEDGER_GRP_MOD_DATE = ?" + "WHERE LEDGER_GRP_ID = ?";
+			+ "LEDGER_GRP_TYPE = ?,"
+			+ "LEDGER_GRP_MOD_DATE = ?"
+			+ " WHERE LEDGER_GRP_ID = ?";
 	private static String DELETE_QUERY = "DELETE FROM DKLF.CITY_GROUP WHERE CITY_GROUP_ID = ?";
 
 	private static String READBY_FK_QUERY = "SELECT * FROM DKLF.LEDGER_GROUP WHERE COMPANY_ID = ?";
@@ -32,6 +32,7 @@ public class LedgGroupDAO implements ILedgGroupDAO {
 
 	@Override
 	public void create(LedgGroupTO ledgGroupTO) {
+		System.out.println("ID ="+ledgGroupTO.getLedgGroupID());
 		jdbcTemplate.update(
 				CREATE_QUERY,
 				new Object[] { ledgGroupTO.getLedgGroupID(),
@@ -60,13 +61,12 @@ public class LedgGroupDAO implements ILedgGroupDAO {
 				UPDATE_QUERY,
 				new Object[] { ledgGroupTO.getLedgGroupName(),
 						ledgGroupTO.getLedgGroupType(),
-						ledgGroupTO.getLedgCreateDate(),
 						ledgGroupTO.getLedgModDate(),
 						ledgGroupTO.getLedgGroupID() });
 	}
 
 	@Override
-	public void delete(int ledgGroupID) {
+	public void delete(String ledgGroupID) {
 		jdbcTemplate.update(DELETE_QUERY, ledgGroupID);
 
 	}

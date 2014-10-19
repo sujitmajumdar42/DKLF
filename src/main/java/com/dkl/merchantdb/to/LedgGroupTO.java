@@ -1,22 +1,22 @@
 package com.dkl.merchantdb.to;
 
 public class LedgGroupTO extends MerchantBaseTO{
-	private String ledgGroupID;
-	private String companyID;
+	private long ledgGroupID;
+	private long companyID;
 	private String ledgGroupName;
 	private String ledgGroupType;
 	private String ledgCreateDate;
 	private String ledgModDate;
-	public String getLedgGroupID() {
+	public long getLedgGroupID() {
 		return ledgGroupID;
 	}
-	public void setLedgGroupID(String ledgGroupID) {
+	public void setLedgGroupID(long ledgGroupID) {
 		this.ledgGroupID = ledgGroupID;
 	}
-	public String getCompanyID() {
+	public long getCompanyID() {
 		return companyID;
 	}
-	public void setCompanyID(String companyID) {
+	public void setCompanyID(long companyID) {
 		this.companyID = companyID;
 	}
 	public String getLedgGroupName() {

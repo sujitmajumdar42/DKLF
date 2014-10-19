@@ -52,4 +52,18 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/viewLedgerGroupJSON.jsp" />
 	</definition>
+	
+	
+	<!-- Party -->
+	<definition name="createParty" extends="base">
+		<put-attribute name="title" value="Create Party" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/createParty.jsp" />
+	</definition>
+	<definition name="viewParty" extends="base">
+		<put-attribute name="title" value="View Party" />
+		<put-attribute name="body" value="/WEB-INF/views/viewParty.jsp" />
+	</definition>
+	
+	<!--  -->
 </tiles-definitions>

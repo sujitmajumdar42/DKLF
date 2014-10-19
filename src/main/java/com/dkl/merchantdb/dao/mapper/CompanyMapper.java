@@ -14,7 +14,7 @@ public class CompanyMapper implements RowMapper<CompanyTO> {
 			throws SQLException {
 
 		CompanyTO companyTO = new CompanyTO();
-		companyTO.setCompanyID(resultSet.getString("company_ID"));
+		companyTO.setCompanyID(resultSet.getLong("company_ID"));
 		companyTO.setCompanyName(resultSet.getString("company_Name"));
 		companyTO.setCity(resultSet.getString("company_city"));
 		companyTO.setState(resultSet.getString("company_state"));

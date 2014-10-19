@@ -6,12 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
 <title><tiles:insertAttribute name="title" ignore="true" />  
 </title>  
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="./js/jquery-1.11.1.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 </head>  
 <body>  
     <table cellspacing="2" align="center" width="1100" height="600" style="border:1px solid gray">  
         <tr>  
-            <td height="20%" width="100%" colspan="2" style="border-bottom:1px solid gray"><tiles:insertAttribute name="header" />  
+            <td height="20%" width="100%" colspan="2" style="border-bottom:1px solid gray; background-color: #1947D1"><tiles:insertAttribute name="header" />  
             </td>  
         </tr>  
         <tr>  

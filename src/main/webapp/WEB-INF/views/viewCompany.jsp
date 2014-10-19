@@ -6,63 +6,108 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Company</title>
-<script type="text/javascript""<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
-<script type="text/javascript"
-	src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#viewCompany').dataTable({
-			"processing" : true,
-			"serverSide" : true,
-			"ajax" : {
-				"url" : "http://localhost:8080/merchantdb/viewCompanyJSON",
-				"type" : "POST"
-			},
-			"columns" : [ {
-				"data" : "companyName"
-			}, {
-				"data" : "city"
-			}, {
-				"data" : "state"
-			}, {
-				"data" : "pinCode"
-			}, {
-				"data" : "tinNumber"
-			}, {
-				"data" : "phoneNumber"
-			}, {
-				"data" : "email"
-			}, {
-				"data" : "slipsIndicator"
-			}, {
-				"data" : "creationDate"
-			}, {
-				"data" : "modifiedDate"
-			} ]
-		});
-	});
+<style type="text/css">
+.ui-dialog .ui-dialog-content {
+	background: none repeat scroll 0 0 transparent;
+	border: 0 none;
+	overflow: auto;
+	padding: 0.5em 1em;
+	position: relative;
+	font-size: 0.7em;
+}
+</style>
+<script>
+ $(document).ready(function(){
+	 $.ajax({
+		 url : 'viewCompanyJSON?companyID=<%=request.getParameter("companyID")%>',
+									type : "POST",
+									success : function(json) {
+										var company = jQuery.parseJSON(json);
+										$("input[name='companyID']").val(
+												company.companyID);
+										$("input[name='companyName']").val(
+												company.companyName);
+										$("input[name='streetName']").val(
+												company.streetName);
+										$("input[name='city']").val(
+												company.city);
+										$("input[name='state']").val(
+												company.state);
+										$("input[name='pinCode']").val(
+												company.pinCode);
+										$("input[name='email']").val(
+												company.email);
+										$("input[name='phoneNumber']").val(
+												company.phoneNumber);
+										$("input[name='tinNumber']").val(
+												company.tinNumber);
+										$(
+												"input[name='slipsIndicator'][value='"
+														+ company.slipsIndicator
+														+ "']").prop("checked",
+												true);
+									}
+								});
+					});
 </script>
 </head>
 <body>
-	<table id="viewCompany">
-		<thead>
+	<form action="/merchantdb/updateCompany" method="post">
+		<input type="hidden" name="companyID">
+		<center>
+			<h3>Update Company</h3>
+			<table align="center">
+				<tr>
+					<td>Company Name</td>
+					<td><input type="text" name="companyName" /></td>
+				</tr>
+				<tr>
+					<td>Street Name</td>
+					<td><input type="text" name="streetName" /></td>
+				</tr>
+				<tr>
+					<td>City</td>
+					<td><input type="text" name="city" /></td>
+				</tr>
+				<tr>
+					<td>State</td>
+					<td><input type="text" name="state" /></td>
+				</tr>
+				<tr>
+					<td>Pincode</td>
+					<td><input type="text" name="pinCode" /></td>
+				</tr>
+				<tr>
+					<td>E-Mail</td>
+					<td><input type="text" name="email" /></td>
+				</tr>
+				<tr>
+					<td>Phone</td>
+					<td><input type="text" name="phoneNumber" /></td>
+				</tr>
+				<tr>
+					<td>TIN Number</td>
+					<td><input type="text" name="tinNumber" /></td>
+				</tr>
+				<tr>
+					<td>Ship System</td>
+					<td><input type="radio" name="slipsIndicator" value="Yes">Yes
+						<input type="radio" name="slipsIndicator" value="No">No</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="Submit" value="Update"></td>
+				</tr>
+			</table>
+		</center>
+	</form>
+	<form method="post" action="/merchantdb/deleteCompany">
+		<input type="hidden" name="companyID">
+		<table align="center">
 			<tr>
-				<th>Name</th>
-				<th>City</th>
-				<th>State</th>
-				<th>Pin</th>
-				<th>TIN</th>
-				<th>Phone</th>
-				<th>E-Mail</th>
-				<th>SlipsIndicator</th>
-				<th>Creation Date</th>
-				<th>Modified Date</th>
+				<td><input type="submit" value="Remove Company"></td>
 			</tr>
-		</thead>
-	</table>
-
+		</table>
+	</form>
 </body>
 
 </html>

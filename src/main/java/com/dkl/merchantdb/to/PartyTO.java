@@ -1,20 +1,50 @@
 package com.dkl.merchantdb.to;
 
-public class PartyTO {
-	
+public class PartyTO extends MerchantBaseTO{
+
+	long partyID;
+	long companyID;
 	String partyName;
-
 	String partyType;
-
 	String streetName;
-
 	String city;
-
 	String telephone;
-
 	String ledgerGroupName;
-
 	String cityGroup;
+	String creationDate;
+	String modifiedDate;
+
+	public String getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(String modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
+	public long getPartyID() {
+		return partyID;
+	}
+
+	public void setPartyID(long partyID) {
+		this.partyID = partyID;
+	}
+
+	public long getCompanyID() {
+		return companyID;
+	}
+
+	public void setCompanyID(long companyID) {
+		this.companyID = companyID;
+	}
 
 	public String getPartyName() {
 		return partyName;
@@ -71,4 +101,5 @@ public class PartyTO {
 	public void setCityGroup(String cityGroup) {
 		this.cityGroup = cityGroup;
 	}
+
 }
